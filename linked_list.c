@@ -6,28 +6,28 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:27:54 by ademarti          #+#    #+#             */
-/*   Updated: 2024/02/27 17:47:44 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/02/27 18:00:09 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct Node
+typedef struct s_stack
 {
 	int nb;
-	struct Node *next;
-} Node;
+	struct s_stack *next;
+} s_stack;
 
 int main ()
 {
-	Node root;
+	s_stack root;
 	root.nb = 15;
-	root.next = malloc(sizeof(Node));
+	root.next = malloc(sizeof(s_stack));
 	root.next->nb = -1;
 	root.next->next = NULL;
 
-	Node *curr;
+	s_stack *curr;
 	curr = &root;
 
 	while (curr != NULL)
