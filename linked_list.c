@@ -6,19 +6,61 @@
 /*   By: ademarti <adelemartin@student.42.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:27:54 by ademarti          #+#    #+#             */
-/*   Updated: 2024/02/29 11:01:36 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:07:52 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "push_swap.h"
 
 typedef struct s_stack
 {
 	int nb;
 	struct s_stack *next;
 } s_stack;
+
+
+int	ft_atoi(const char *nptr)
+{
+	size_t	result;
+	size_t	sign;
+	size_t	i;
+
+	i = 0;
+	result = 0;
+	sign = 1;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
+	{
+		i++;
+	}
+	if (nptr[i] == '+' || nptr[i] == '-')
+	{
+		if (nptr[i] == '-')
+		{
+			sign = -1;
+		}
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9' )
+	{
+		result = result * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (sign * result);
+}
+
+int is_duplicate(s_stack *s_a, int nb)
+{
+	s_stack *temp;
+	temp = malloc(sizeof(s_stack));
+	while (temp != NULL)
+	{
+		if (nb == temp->nb)
+			return 1;
+		temp = temp->next;
+	}
+	return (0);
+}
+
 
 void append_stack(s_stack *s_a, int n)
 {
@@ -33,29 +75,49 @@ void append_stack(s_stack *s_a, int n)
 
 int main (int ac, char **av)
 {
-	int j;
-	s_stack s_a;
+
+	s_stack	s_a;
+	s_stack	s_b;
+	int		j;
+	int i;
+	s_stack	*curr;
+
 	s_a.next = NULL;
-	s_stack *curr;
-	curr = &s_a;
-
 	j = 1;
-
-//Change this to ft_atoi asaaaap
+	i = 0;
+//Change this to ft_printf
 	while (av[j])
 	{
-		append_stack(&s_a, atoi(av[j]));
+		i = 0;
+		while (av[j][i])
+		{
+		if ((av[j][i] == '-' && av[j][i+1] == '-' || av[j][i] == '+' && av[j][i+1] == '+' ) || (!(av[j][i] >= '0' && av[j][i] <= '9' || av[j][i] == '+' || av[j][i] == '-' || av[j][i] == ' ')))
+		{
+			printf("Error\n");
+			exit(EXIT_FAILURE);
+		}
+		i++;
+		}
 		j++;
 	}
+	j = 1;
+	while (av[j])
+	{
+		append_stack(&s_a, ft_atoi(av[j]));
+		j++;
+	}
+	curr = &s_a;
 	while (curr->next != NULL)
 		{
-        curr = curr->next;
-		printf("%d ", curr->nb);
-    	}
+		if (is_duplicate(&s_a, curr->nb) == 1)
+			printf("Error\n");
+        else
+		curr = curr->next;
+			printf("%d ", curr->nb);
 
-	s_stack s_b;
-	s_a.next->next = NULL;
+    	}
+	free(s_a.next);
 	s_b.nb = -1;
     s_b.next = NULL;
-	free(s_a.next);
+	free(s_b.next);
 }
