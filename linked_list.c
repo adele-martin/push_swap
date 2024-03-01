@@ -6,7 +6,7 @@
 /*   By: ademarti <adelemartin@student.42.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:27:54 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/01 17:00:24 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:21:03 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,21 @@ int	ft_atoi(const char *nptr)
 	return (sign * result);
 }
 
-int is_duplicate(s_stack *s_a, int nb)
-{
-	s_stack *temp;
-	temp = malloc(sizeof(s_stack));
-	while (temp != NULL)
-	{
-		if (nb == temp->nb)
-			return 1;
-		temp = temp->next;
-	}
-	return (0);
-}
-
 void append_stack(s_stack *s_a, int n)
 {
 	s_stack *new_node;
 	new_node = malloc(sizeof(s_stack));
 	if (!new_node)
 		exit(EXIT_FAILURE);
+	s_stack *temp = s_a->next;
+    while (temp != NULL) {
+        if (temp->nb == n) {
+            printf("Error: Duplicate found (%d)\n", n);
+            free(new_node); // Free the memory allocated for new_node
+            return; // Exit function without appending duplicate
+        }
+        temp = temp->next;
+    }
 	while (s_a->next != NULL)
 	{
 		s_a = s_a->next;
@@ -74,6 +70,12 @@ void append_stack(s_stack *s_a, int n)
 	new_node->nb = n;
 	new_node->next = s_a->next;
 	s_a->next = new_node;
+	//while (new_node->next != NULL)
+	//{
+	//	if (n == new_node->nb)
+	//		printf("Error");
+	//	new_node = new_node->next;
+	//}
 }
 
 int main (int ac, char **av)
@@ -112,9 +114,6 @@ int main (int ac, char **av)
 	curr = &s_a;
 	while (curr->next != NULL)
 		{
-		if (is_duplicate(&s_a, curr->nb) == 1)
-			printf("Error\n");
-        else
 		curr = curr->next;
 			printf("%d ", curr->nb);
     	}
