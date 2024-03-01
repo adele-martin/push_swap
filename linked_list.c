@@ -6,7 +6,7 @@
 /*   By: ademarti <adelemartin@student.42.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:27:54 by ademarti          #+#    #+#             */
-/*   Updated: 2024/02/29 13:07:52 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:00:24 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,16 @@ int is_duplicate(s_stack *s_a, int nb)
 	return (0);
 }
 
-
 void append_stack(s_stack *s_a, int n)
 {
 	s_stack *new_node;
 	new_node = malloc(sizeof(s_stack));
 	if (!new_node)
 		exit(EXIT_FAILURE);
+	while (s_a->next != NULL)
+	{
+		s_a = s_a->next;
+	}
 	new_node->nb = n;
 	new_node->next = s_a->next;
 	s_a->next = new_node;
@@ -114,8 +117,8 @@ int main (int ac, char **av)
         else
 		curr = curr->next;
 			printf("%d ", curr->nb);
-
     	}
+
 	free(s_a.next);
 	s_b.nb = -1;
     s_b.next = NULL;
