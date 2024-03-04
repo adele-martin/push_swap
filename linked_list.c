@@ -6,18 +6,11 @@
 /*   By: ademarti <adelemartin@student.42.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:27:54 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/01 17:21:03 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/04 11:26:13 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-typedef struct s_stack
-{
-	int nb;
-	struct s_stack *next;
-} s_stack;
-
 
 int	ft_atoi(const char *nptr)
 {
@@ -55,11 +48,13 @@ void append_stack(s_stack *s_a, int n)
 	if (!new_node)
 		exit(EXIT_FAILURE);
 	s_stack *temp = s_a->next;
-    while (temp != NULL) {
-        if (temp->nb == n) {
-            printf("Error: Duplicate found (%d)\n", n);
-            free(new_node); // Free the memory allocated for new_node
-            return; // Exit function without appending duplicate
+    while (temp != NULL)
+	{
+        if (temp->nb == n)
+		{
+			free(new_node);
+            printf("Error\n");
+            exit(EXIT_FAILURE);
         }
         temp = temp->next;
     }
@@ -70,12 +65,6 @@ void append_stack(s_stack *s_a, int n)
 	new_node->nb = n;
 	new_node->next = s_a->next;
 	s_a->next = new_node;
-	//while (new_node->next != NULL)
-	//{
-	//	if (n == new_node->nb)
-	//		printf("Error");
-	//	new_node = new_node->next;
-	//}
 }
 
 int main (int ac, char **av)
@@ -121,5 +110,6 @@ int main (int ac, char **av)
 	free(s_a.next);
 	s_b.nb = -1;
     s_b.next = NULL;
+	pb(&s_a, &s_b);
 	free(s_b.next);
 }
