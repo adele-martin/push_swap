@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ademarti <adelemartin@student.42.fr>       +#+  +:+       +#+        */
+/*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:27:54 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/04 12:24:41 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:51:39 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ void append_stack(s_stack *s_a, int n)
 	if (!new_node)
 		exit(EXIT_FAILURE);
 	s_stack *temp = s_a->next;
-    while (temp != NULL)
+	while (temp != NULL)
 	{
-        if (temp->nb == n)
+		if (temp->nb == n)
 		{
 			free(new_node);
-            printf("Error\n");
-            exit(EXIT_FAILURE);
-        }
-        temp = temp->next;
-    }
+			printf("Error\n");
+			exit(EXIT_FAILURE);
+		}
+		temp = temp->next;
+	}
 	while (s_a->next != NULL)
 	{
 		s_a = s_a->next;
@@ -79,15 +79,15 @@ int main (int ac, char **av)
 	s_a.next = NULL;
 	j = 1;
 	i = 0;
-//Change this to ft_printf
 	while (av[j])
 	{
 		i = 0;
 		while (av[j][i])
 		{
-		if ((av[j][i] == '-' && av[j][i+1] == '-' || av[j][i] == '+' && av[j][i+1] == '+' ) || (!(av[j][i] >= '0' && av[j][i] <= '9' || av[j][i] == '+' || av[j][i] == '-' || av[j][i] == ' ')))
+		if (((av[j][i] == '-' && av[j][i+1] == '-')) || ((av[j][i] == '+' && av[j][i+1] == '+' )) ||
+		(!((av[j][i] >= '0' && av[j][i] <= '9') || av[j][i] == '+' || av[j][i] == '-' || av[j][i] == ' ')))
 		{
-			printf("Error\n");
+			ft_putstr_fd("Error\n");
 			exit(EXIT_FAILURE);
 		}
 		i++;
