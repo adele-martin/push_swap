@@ -6,55 +6,28 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:27:54 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/04 14:51:39 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:08:28 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *nptr)
+void	append_stack(s_stack *s_a, int n)
 {
-	size_t	result;
-	size_t	sign;
-	size_t	i;
+	s_stack	*new_node;
+	s_stack	*temp;
 
-	i = 0;
-	result = 0;
-	sign = 1;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
-	{
-		i++;
-	}
-	if (nptr[i] == '+' || nptr[i] == '-')
-	{
-		if (nptr[i] == '-')
-		{
-			sign = -1;
-		}
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9' )
-	{
-		result = result * 10 + (nptr[i] - '0');
-		i++;
-	}
-	return (sign * result);
-}
-
-void append_stack(s_stack *s_a, int n)
-{
-	s_stack *new_node;
 	new_node = malloc(sizeof(s_stack));
 	if (!new_node)
-		exit(EXIT_FAILURE);
-	s_stack *temp = s_a->next;
+		return;
+	temp = s_a->next;;
 	while (temp != NULL)
 	{
 		if (temp->nb == n)
 		{
 			free(new_node);
-			printf("Error\n");
-			exit(EXIT_FAILURE);
+			ft_putstr_fd("Error\n");
+			return;
 		}
 		temp = temp->next;
 	}
@@ -67,7 +40,7 @@ void append_stack(s_stack *s_a, int n)
 	s_a->next = new_node;
 }
 
-int main (int ac, char **av)
+int	main (int ac, char **av)
 {
 
 	s_stack	s_a;
@@ -81,6 +54,10 @@ int main (int ac, char **av)
 	i = 0;
 	while (av[j])
 	{
+		if (ac <= 2)
+		{
+			return;
+		}
 		i = 0;
 		while (av[j][i])
 		{
@@ -88,7 +65,7 @@ int main (int ac, char **av)
 		(!((av[j][i] >= '0' && av[j][i] <= '9') || av[j][i] == '+' || av[j][i] == '-' || av[j][i] == ' ')))
 		{
 			ft_putstr_fd("Error\n");
-			exit(EXIT_FAILURE);
+			return;
 		}
 		i++;
 		}
@@ -105,11 +82,11 @@ int main (int ac, char **av)
 		{
 		curr = curr->next;
 			printf("%d ", curr->nb);
-    	}
+		}
 
-	pa(&s_a, &s_b);
+	// pa(&s_a, &s_b);
 	s_b.nb = -1;
-    s_b.next = NULL;
+	s_b.next = NULL;
 	free(s_a.next);
 	free(s_b.next);
 }
