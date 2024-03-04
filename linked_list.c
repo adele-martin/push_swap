@@ -6,7 +6,7 @@
 /*   By: ademarti <adelemartin@student.42.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:27:54 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/04 11:26:13 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/04 12:24:41 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,9 @@ int main (int ac, char **av)
 			printf("%d ", curr->nb);
     	}
 
-	free(s_a.next);
+	pa(&s_a, &s_b);
 	s_b.nb = -1;
     s_b.next = NULL;
-	pb(&s_a, &s_b);
+	free(s_a.next);
 	free(s_b.next);
 }

@@ -12,6 +12,7 @@ typedef struct s_stack
 	struct s_stack *next;
 } s_stack;
 
-void pb(s_stack *s_a, s_stack *s_b);
 
+void	pa(s_stack **stack_a, s_stack **stack_b);
+void push(s_stack **src, s_stack **dest);
 #endif
