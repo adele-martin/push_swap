@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:27:54 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/05 14:53:54 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:07:16 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void insertFront(s_stack **s_a, int n)
 		return;
 	new_node->value = n;
 	new_node->next = (*s_a);
-
-	
 	new_node->prev = NULL;
 	if ((*s_a) != NULL)
 		(*s_a)->prev = new_node;
@@ -39,6 +37,7 @@ void check_duplicates(s_stack **s_a, int n)
 	{
 		if (temp->value == n)
 			ft_putstr_fd("Error\n", 1);
+			// return 1;
 		temp = temp->next;
 	}
 }
@@ -58,9 +57,10 @@ int	main (int ac, char **av)
 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return 1;
 	else if(ac == 2)
-	{
 		av = ft_split(av[1], ' ');
-		while (av[j])
+	// if (ft_atoi(av[j]) == 1)
+	// 	return 1;
+	while (av[j])
 		{
 			i = 0;
 			while (av[j][i])
@@ -82,12 +82,10 @@ int	main (int ac, char **av)
 			check_duplicates(&s_a, ft_atoi(av[j]));
 			j++;
 		}
-	}
 	curr = s_a;
-	printf("hoe");
+
 	while (curr != NULL)
 	{
-		printf("hoe");
 		printf("%d", curr->value);
 		curr = curr->next;
 	}
