@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:27:54 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/05 13:26:25 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/05 13:43:22 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,24 @@ void insertFront(s_stack **s_a, int n)
 	s_a = &new_node;
 }
 
+void check_duplicates(s_stack **s_a, int n)
+{
+	s_stack *temp;
+	temp = *s_a;
+	while (temp != NULL)
+	{
+		if (temp->nb == n)
+			ft_putstr_fd("Error\n", 1);
+		temp = temp->next;
+	}
+}
+
 int	main (int ac, char **av)
 {
 	s_stack	*s_a;
 	s_stack	*s_b;
 	int		j;
 	int		i;
-	// s_stack	*curr;
 
 	s_a = NULL;
 	s_b = NULL;
@@ -62,6 +73,7 @@ int	main (int ac, char **av)
 	while (av[j])
 	{
 		insertFront(&s_a, ft_atoi(av[j]));
+		// check_duplicates(&s_a, ft_atoi(av[j]));
 		j++;
 	}
 	printf("hey");
