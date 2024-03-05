@@ -6,7 +6,7 @@
 #    By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/04 13:30:55 by ademarti          #+#    #+#              #
-#    Updated: 2024/03/04 17:01:07 by ademarti         ###   ########.fr        #
+#    Updated: 2024/03/05 12:22:49 by ademarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,17 +20,18 @@ OBJS = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-
-libft:
-	$(MAKE) -C libft/libft.a
+	@make -C $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) -L./$(LIBFT) -lft -o $(NAME)
 
 clean:
 	rm -rf $(LIBFT)/*.o
 	rm -rf $(OBJS)
+	rm -rf $(BONUS_OBJS)
 
 fclean: clean
 	rm -f $(LIBFT)/libft.a
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all bonus clean fclean re
