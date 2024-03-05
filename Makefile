@@ -6,15 +6,15 @@
 #    By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/04 13:30:55 by ademarti          #+#    #+#              #
-#    Updated: 2024/03/05 12:22:49 by ademarti         ###   ########.fr        #
+#    Updated: 2024/03/05 13:31:40 by ademarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = gcc
 CFLAGS = -Wextra -Wall -Werror
-SRC = push.c linked_list.c
-LIBFT = libft/libft.a
+SRC = push.c main.c \
+LIBFT = libft
 OBJS = $(SRC:.c=.o)
 
 all: $(NAME)
@@ -31,6 +31,7 @@ clean:
 fclean: clean
 	rm -f $(LIBFT)/libft.a
 	rm -f $(NAME)
+	rm -f $(BONUS_NAME)
 
 re: fclean all
 

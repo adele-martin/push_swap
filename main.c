@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:27:54 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/05 12:57:54 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/05 13:26:25 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main (int ac, char **av)
 	s_stack	*s_b;
 	int		j;
 	int		i;
-	s_stack	*curr;
+	// s_stack	*curr;
 
 	s_a = NULL;
 	s_b = NULL;
@@ -65,9 +65,9 @@ int	main (int ac, char **av)
 		j++;
 	}
 	printf("hey");
-	// pa(&s_a, &s_b);
+	push(&s_a, &s_b);
 
-	// free(s_a.next);
-	// free(s_b.next);
+	free(s_a);
+	free(s_b);
 	return 0;
 }
