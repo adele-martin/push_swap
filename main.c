@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:27:54 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/05 15:07:16 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:17:48 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,14 @@ void check_duplicates(s_stack **s_a, int n)
 {
 	s_stack *temp;
 	temp = *s_a;
+	temp = temp->next;
 	while (temp != NULL)
 	{
 		if (temp->value == n)
+		{
 			ft_putstr_fd("Error\n", 1);
-			// return 1;
+			return;
+		}
 		temp = temp->next;
 	}
 }
@@ -60,6 +63,7 @@ int	main (int ac, char **av)
 		av = ft_split(av[1], ' ');
 	// if (ft_atoi(av[j]) == 1)
 	// 	return 1;
+	//If one number is entered, you should return
 	while (av[j])
 		{
 			i = 0;
@@ -75,8 +79,8 @@ int	main (int ac, char **av)
 			}
 			j++;
 		}
-		j = 1;
-		while (av[j])
+	j = 1;
+	while (av[j])
 		{
 			insertFront(&s_a, ft_atoi(av[j]));
 			check_duplicates(&s_a, ft_atoi(av[j]));
