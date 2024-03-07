@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:27:54 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/07 12:35:59 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:54:00 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,21 @@ void insertFront(s_stack **stack, int n)
 	}
 }
 
-void check_duplicates(s_stack **s_a, int n)
+int	check_duplicates(s_stack *s_a, int n)
 {
-	s_stack *temp;
-	temp = *s_a;
-	temp = temp->next;
-	while (temp != NULL)
+	s_a = s_a->next;
+	while (s_a)
 	{
-		if (temp->value == n)
+		if (s_a->value == n)
 		{
-			ft_putstr_fd("Error\n", 1);
-			return;
+			return (1);
 		}
-		temp = temp->next;
+		s_a = s_a->next;
 	}
+	return 0;
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	s_stack *s_a;
 	s_stack *s_b;
@@ -86,7 +84,7 @@ int main(int ac, char **av)
 			if (((av[j][i] == '-' && av[j][i + 1] == '-')) || ((av[j][i] == '+' && av[j][i + 1] == '+')) ||
 				(!((av[j][i] >= '0' && av[j][i] <= '9') || av[j][i] == '+' || av[j][i] == '-' || av[j][i] == ' ')))
 			{
-				printf("Error\n");
+				ft_putstr_fd("Error\n", 1);
 				return 0;
 			}
 			i++;
@@ -97,18 +95,21 @@ int main(int ac, char **av)
 	while (av[j])
 	{
 		insertFront(&s_a, ft_atoi(av[j]));
-		check_duplicates(&s_a, ft_atoi(av[j]));
+		if (check_duplicates(s_a, ft_atoi(av[j]) == 1))
+		{
+			ft_putstr_fd("Error\n", 1);
+			return 0;
+		}
 		j++;
 	}
+	pb(&s_a, &s_b);
 
-		curr = s_a;
-		while (curr != NULL)
-		{
-			printf("%d", curr->value);
-			curr = curr->next;
-		}
-
-	push(&s_a, &s_b);
+	curr = s_a;
+	while (curr != NULL)
+	{
+		printf("%d", curr->value);
+		curr = curr->next;
+	}
 
 	free(s_a);
 	free(s_b);

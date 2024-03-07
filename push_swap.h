@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:31:16 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/05 14:22:35 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:53:44 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ typedef struct t_stack
 
 void push(s_stack **src, s_stack **dest);
 void	pa(s_stack **stack_a, s_stack **stack_b);
+void	pb(s_stack **stack_a, s_stack **stack_b);
 
 #endif
