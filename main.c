@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:27:54 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/05 15:17:48 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/07 11:05:40 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void insertFront(s_stack **s_a, int n)
 		return;
 	new_node->value = n;
 	new_node->next = (*s_a);
-	new_node->prev = NULL;
 	if ((*s_a) != NULL)
 		(*s_a)->prev = new_node;
+	new_node->prev = NULL;
 	(*s_a) = new_node;
 }
 
@@ -61,9 +61,6 @@ int	main (int ac, char **av)
 		return 1;
 	else if(ac == 2)
 		av = ft_split(av[1], ' ');
-	// if (ft_atoi(av[j]) == 1)
-	// 	return 1;
-	//If one number is entered, you should return
 	while (av[j])
 		{
 			i = 0;
@@ -94,7 +91,7 @@ int	main (int ac, char **av)
 		curr = curr->next;
 	}
 
-	// push(&s_a, &s_b);
+	push(&s_a, &s_b);
 
 	free(s_a);
 	free(s_b);

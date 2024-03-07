@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:31:03 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/05 13:05:02 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/07 10:46:30 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void push(s_stack **src, s_stack **dest)
 {
+	// printf("hey\n");
 	s_stack	*temp;
 	if (*src == NULL)
 		return ;
@@ -21,6 +22,7 @@ void push(s_stack **src, s_stack **dest)
 	(*src)->next = *dest; //
 	*dest = *src;
 	*src = temp;
+	//Should I return a value?
 }
 
 void	pa(s_stack **stack_a, s_stack **stack_b)
