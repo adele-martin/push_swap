@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:31:03 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/07 14:53:16 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/11 18:01:56 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,24 @@
 
 void push(s_stack **src, s_stack **dest)
 {
-	s_stack	*temp;
+	s_stack	*node_to_push;
 	if (*src == NULL)
 		return ;
-	temp = (*src)->next; //src stack is updated. First node is deleted.
-	(*src)->next = *dest; //
-	*dest = *src;
-	*src = temp;
-	//Should I return a value?
+	node_to_push = *src;
+	*src = (*src)->next;
+	if (*src)
+		(*src)->prev = NULL;
+	node_to_push->prev = NULL;
+	if (*dest == NULL)
+	{
+		*dest = node_to_push;
+		node_to_push->next = NULL;
+	}
+	else
+	{
+		node_to_push->next = *dest;
+		*dest = node_to_push;
+	}
 }
 
 void	pa(s_stack **stack_a, s_stack **stack_b)

@@ -6,13 +6,13 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:17:37 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/11 17:03:18 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:33:20 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void handle_arguments(char **av, s_stack **s_a)
+void handle_arguments(char **av)
 {
 	int	i;
 	int	nbr_args;
@@ -25,7 +25,7 @@ void handle_arguments(char **av, s_stack **s_a)
 		i++;
 	}
 	if (nbr_args < 2)
-		error_free(s_a);
+		exit(1);
 }
 
 int	check_duplicates(s_stack *s_a, int n)

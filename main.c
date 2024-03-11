@@ -79,7 +79,7 @@ int	main(int ac, char **av)
 		return 1;
 	else if (ac == 2)
 		av = ft_split(av[1], ' ');
-	handle_arguments(av, &s_a);
+	handle_arguments(av);
 	initialize_stack(av + 1, &s_a);
 	pb(&s_a, &s_b);
 	curr = s_a;
