@@ -55,16 +55,15 @@ int error_syntax(char *nbr)
 	i = 0;
 	while (nbr[i])
 	{
-    	if (((nbr[i] == '-' && nbr[i + 1] == '-')) || ((nbr[i] == '+' && nbr[i + 1] == '+')) ||
-    	(!((nbr[i] >= '0' && nbr[i] <= '9') || nbr[i] == '+' || nbr[i] == '-' || nbr[i] == ' ')))
+		if (((nbr[i] == '-' && nbr[i + 1] == '-')) || ((nbr[i] == '+' && nbr[i + 1] == '+')) ||
+		(!((nbr[i] >= '0' && nbr[i] <= '9') || nbr[i] == '+' || nbr[i] == '-' || nbr[i] == ' ')))
 		{
-        	// ft_putstr_fd("Error", 1);
-            return 1;
-    	}
-            i++;
-    }
+			return 1;
+		}
+			i++;
+	}
 		return 0;
-    }
+	}
 
 void free_stack(s_stack **stack)
 {
@@ -73,16 +72,19 @@ void free_stack(s_stack **stack)
 
 	if (NULL == stack)
 		return;
+	current = *stack;
 	while (current)
 	{
-
+		temp = current ->next;
+		free(current);
+		current = temp;
 	}
 	*stack = NULL;
 }
 
 void	error_free(s_stack **s_a)
 {
-	free_tack(s_a);
+	free_stack(s_a);
 	write(2, "Error\n", 6);
 	exit(1);
 }
@@ -117,8 +119,6 @@ void error_handling(char **av, s_stack **s_a)
 //     return count;
 // }
 
-
-
 int	main(int ac, char **av)
 {
 	s_stack *s_a;
@@ -143,7 +143,7 @@ int	main(int ac, char **av)
 		curr = curr->next;
 	}
 
-	free(s_a);
-	free(s_b);
+	free_stack(&s_a);
+	free_stack(&s_b);
 	return 0;
 }
