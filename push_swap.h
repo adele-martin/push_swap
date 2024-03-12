@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:31:16 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/11 17:34:00 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:37:45 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ void handle_arguments(char **av);
 void push(s_stack **src, s_stack **dest);
 void	pa(s_stack **stack_a, s_stack **stack_b);
 void	pb(s_stack **stack_a, s_stack **stack_b);
+void swap(s_stack **stack);
+void sa(s_stack **s_a);
 
 #endif

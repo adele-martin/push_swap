@@ -6,14 +6,14 @@
 #    By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/04 13:30:55 by ademarti          #+#    #+#              #
-#    Updated: 2024/03/11 16:52:32 by ademarti         ###   ########.fr        #
+#    Updated: 2024/03/12 14:38:24 by ademarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = gcc
 CFLAGS = -Wextra -Wall -Werror
-SRC = push.c main.c test.c error_handling.c
+SRC = push.c main.c test.c error_handling.c swap.c
 LIBFT = libft
 OBJS = $(SRC:.c=.o)
 

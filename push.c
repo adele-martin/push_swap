@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:31:03 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/11 18:01:56 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:11:51 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void push(s_stack **src, s_stack **dest)
 	node_to_push = *src;
 	*src = (*src)->next;
 	if (*src)
-		(*src)->prev = NULL;
+		(*src)->prev = NULL; //Detach the node from stack A.
 	node_to_push->prev = NULL;
 	if (*dest == NULL)
 	{

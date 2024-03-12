@@ -81,7 +81,7 @@ int	main(int ac, char **av)
 		av = ft_split(av[1], ' ');
 	handle_arguments(av);
 	initialize_stack(av + 1, &s_a);
-	pb(&s_a, &s_b);
+	sa(&s_a);
 	curr = s_a;
 	while (curr != NULL)
 	{
