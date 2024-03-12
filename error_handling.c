@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:17:37 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/11 17:33:20 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/12 16:45:00 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_duplicates(s_stack *s_a, int n)
 	return 0;
 }
 
-int error_syntax(char *nbr)
+int	error_syntax(char *nbr)
 {
 	int i;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:36:55 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/12 15:23:21 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/12 16:30:34 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int stack_len(s_stack *stack)
 {
-	int counter;
+	int	counter;
+
 	counter = 0;
 	if (stack == NULL)
 		return (0);
@@ -31,16 +32,15 @@ void swap(s_stack **stack)
 	int len;
 
 	len = stack_len(*stack);
-    // if (stack == NULL || *stack == NULL || 1 = len)
-    //     return;
-	printf("%d", len);
+    if (stack == NULL || *stack == NULL || 1 = len)
+		return;
 
     s_stack *node_two = *stack;
     s_stack *node_one = (*stack)->next;
 
     node_two->next = node_one->next;
     node_one->prev = node_two->prev;
-    node_two->prev = node_one;
+    node_two->prev = node_one; 
     node_one->next = node_two;
 
     *stack = node_one; // Update stack pointer if necessary
