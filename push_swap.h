@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:31:16 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/12 14:37:45 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:59:14 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct t_stack
 	int value;
 	int curr_pos;
 	struct t_stack *next;
-	struct t_stack *prev;
 } s_stack;
 
 //Error handling
@@ -43,5 +42,12 @@ void	pa(s_stack **stack_a, s_stack **stack_b);
 void	pb(s_stack **stack_a, s_stack **stack_b);
 void swap(s_stack **stack);
 void sa(s_stack **s_a);
+void	sb(s_stack **s_b);
+void	rotate(s_stack **stack);
+
+//Utils
+int	stack_len(s_stack *stack);
+
+s_stack *traverse_stack(s_stack *head);
 
 #endif

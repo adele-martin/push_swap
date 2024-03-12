@@ -36,13 +36,11 @@ void insertFront(s_stack **stack, int n)
 	if (*stack == NULL)
 	{
 		(*stack) = new_node;
-		new_node->prev = NULL;
 	}
 	else
 	{
 		last_node = traverse_stack(*stack);
 		last_node->next = new_node;
-		new_node->prev = last_node;
 	}
 }
 
@@ -81,7 +79,7 @@ int	main(int ac, char **av)
 		av = ft_split(av[1], ' ');
 	handle_arguments(av);
 	initialize_stack(av + 1, &s_a);
-	sa(&s_a);
+	rotate(&s_a);
 	curr = s_a;
 	while (curr != NULL)
 	{

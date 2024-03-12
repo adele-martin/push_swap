@@ -6,48 +6,41 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:36:55 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/12 16:30:34 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:16:44 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int stack_len(s_stack *stack)
+void	swap(s_stack **stack)
 {
-	int	counter;
-
-	counter = 0;
-	if (stack == NULL)
-		return (0);
-	while (stack!= NULL)
-	{
-		stack = stack->next;
-		counter++;
-	}
-	return (counter);
-}
-
-void swap(s_stack **stack)
-{
-	int len;
+	int	len;
 
 	len = stack_len(*stack);
-    if (stack == NULL || *stack == NULL || 1 = len)
+	if (stack == NULL || *stack == NULL || 1 == len)
 		return;
-
-    s_stack *node_two = *stack;
-    s_stack *node_one = (*stack)->next;
-
-    node_two->next = node_one->next;
-    node_one->prev = node_two->prev;
-    node_two->prev = node_one; 
-    node_one->next = node_two;
-
-    *stack = node_one; // Update stack pointer if necessary
+	s_stack *node_one = (*stack)->next;
+	s_stack *node_two = *stack;
+	node_two->next = node_one->next;
+	node_one->next = node_two;
+	*stack = node_one;
 }
 
-void sa(s_stack **s_a)
+void	sa(s_stack **s_a)
 {
 	swap(s_a);
 	ft_putstr_fd("sa\n", 1);
+}
+
+void	sb(s_stack **s_b)
+{
+	swap(s_b);
+	ft_putstr_fd("sb\n", 1);
+}
+
+void	ss(s_stack **s_a, s_stack **s_b)
+{
+	swap(s_a);
+	swap(s_b);
+	ft_putstr_fd("ss\n", 1);
 }
