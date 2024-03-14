@@ -79,8 +79,8 @@ int	main(int ac, char **av)
 		av = ft_split(av[1], ' ');
 	handle_arguments(av);
 	initialize_stack(av + 1, &s_a);
-	swap(&s_b);
-	curr = s_a;
+	rrb(&s_b);
+	curr = s_b;
 	while (curr != NULL)
 	{
 		printf("%d", curr->value);
