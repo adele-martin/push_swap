@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:36:55 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/14 18:00:55 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:18:39 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void	swap(s_stack **stack)
 {
-	int	len;
+	int		len;
+	s_stack	*node_one;
+	s_stack	*node_two;
 
 	len = stack_len(*stack);
 	if (stack == NULL || *stack == NULL || 1 == len)
-		return;
-	s_stack *node_one = (*stack)->next;
-	s_stack *node_two = *stack;
+		return ;
+	node_one = (*stack)->next;
+	node_two = *stack;
 	node_two->next = node_one->next;
 	node_one->next = node_two;
 	*stack = node_one;

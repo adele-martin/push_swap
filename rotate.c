@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 17:19:07 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/14 18:04:35 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:18:24 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	rotate(s_stack **stack)
 {
 	s_stack	*to_rotate;
-	s_stack *last_node;
-	int len;
+	s_stack	*last_node;
+	int		len;
 
 	len = stack_len(*stack);
 	if (NULL == stack || NULL == *stack || 1 == len)
@@ -26,7 +26,6 @@ void	rotate(s_stack **stack)
 	last_node->next = to_rotate;
 	*stack = (*stack)->next;
 	last_node->next->next = NULL;
-
 }
 
 void	rb(s_stack **s_b)

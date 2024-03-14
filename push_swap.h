@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:31:16 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/14 17:18:33 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:18:01 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct t_stack
 
 //Error handling
 int	check_duplicates(s_stack *s_a, int n);
-int error_syntax(char *nbr);
+int	error_syntax(char *nbr);
 void free_stack(s_stack **stack);
 void	error_free(s_stack **s_a);
 void handle_arguments(char **av);
