@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 17:19:07 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/12 18:14:30 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:21:10 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,35 @@
 void	rotate(s_stack **stack)
 {
 	s_stack	*to_rotate;
-	s_stack	*new_head;
 	s_stack *last_node;
-	s_stack *temp;
+	int len;
 
-	temp = *stack
-
+	len = stack_len(*stack);
+	if (NULL == stack || NULL == *stack || 1 == len)
+		return ;
+	last_node = traverse_stack(*stack);
 	to_rotate = *stack;
-	new_head = (*stack)->next;
-
-	last_node = traverse_stack(new_head);
 	last_node->next = to_rotate;
-	to_rotate->next = new_head;
-	*stack = new_head;
+	*stack = (*stack)->next;
+	last_node->next->next = NULL;
+
+}
+
+void	rb(s_stack **s_b)
+{
+	rotate(s_b);
+	ft_putstr_fd("rb\n", 1);
+}
+
+void	ra(s_stack **s_a)
+{
+	rotate(s_a);
+	ft_putstr_fd("ra\n", 1);
+}
+
+void	rr(s_stack **s_a, s_stack **s_b)
+{
+	rotate(s_a);
+	rotate(s_b);
+	ft_putstr_fd("rr\n", 1);
 }

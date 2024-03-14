@@ -21,7 +21,7 @@ s_stack *traverse_stack(s_stack *head)
 	return (head);
 }
 
-void insertFront(s_stack **stack, int n)
+void	insertFront(s_stack **stack, int n)
 {
 	s_stack *new_node;
 	s_stack *last_node;
@@ -79,7 +79,7 @@ int	main(int ac, char **av)
 		av = ft_split(av[1], ' ');
 	handle_arguments(av);
 	initialize_stack(av + 1, &s_a);
-	rotate(&s_a);
+	swap(&s_b);
 	curr = s_a;
 	while (curr != NULL)
 	{

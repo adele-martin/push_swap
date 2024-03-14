@@ -6,7 +6,7 @@
 /*   By: ademarti <ademarti@student.42berlin.de     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:31:16 by ademarti          #+#    #+#             */
-/*   Updated: 2024/03/12 17:59:14 by ademarti         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:18:33 by ademarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ void swap(s_stack **stack);
 void sa(s_stack **s_a);
 void	sb(s_stack **s_b);
 void	rotate(s_stack **stack);
+void	ra(s_stack **s_a);
+void	rb(s_stack **s_b);
+void	reverse_rotate(s_stack **stack);
+void	rra(s_stack **s_a);
+void	rrb(s_stack **s_b);
+void	rrr(s_stack **s_a, s_stack **s_b);
 
 //Utils
 int	stack_len(s_stack *stack);
